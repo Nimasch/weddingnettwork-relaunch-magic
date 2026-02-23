@@ -3,21 +3,47 @@ import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Checkbox } from "@/components/ui/checkbox";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/wedding-nettwork-logo.jpeg";
 import heroBg from "@/assets/hero-bg.jpg";
 
+type UserRole = "couple" | "vendor";
+
 const Index = () => {
   const [email, setEmail] = useState("");
+  const [userRole, setUserRole] = useState<UserRole>("couple");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail("");
-      setPrivacyAccepted(false);
+    if (!email) return;
+
+    setSubmitting(true);
+    const { error } = await supabase
+      .from("waitlist")
+      .insert({ email, role: userRole });
+
+    if (error) {
+      toast({
+        title: "Fehler",
+        description: error.code === "23505"
+          ? "Diese E-Mail ist bereits registriert."
+          : "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+        variant: "destructive",
+      });
+      setSubmitting(false);
+      return;
     }
+
+    setSubmitted(true);
+    setEmail("");
+    setUserRole("couple");
+    setPrivacyAccepted(false);
+    setSubmitting(false);
   };
 
   return (
@@ -122,7 +148,33 @@ const Index = () => {
               </span>
             </motion.div> :
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {/* Role tabs */}
+              <div className="flex rounded-lg overflow-hidden border border-border">
+                <button
+                  type="button"
+                  onClick={() => setUserRole("couple")}
+                  className={`flex-1 px-4 py-2.5 text-sm font-body font-bold transition-all duration-300 ${
+                    userRole === "couple"
+                      ? "bg-gold text-primary-foreground"
+                      : "bg-card text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  Ich bin ein Brautpaar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setUserRole("vendor")}
+                  className={`flex-1 px-4 py-2.5 text-sm font-body font-bold transition-all duration-300 ${
+                    userRole === "vendor"
+                      ? "bg-gold text-primary-foreground"
+                      : "bg-card text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  Ich bin ein Dienstleister
+                </button>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
                 type="email"
@@ -134,10 +186,9 @@ const Index = () => {
 
                 <button
                 type="submit"
-                disabled={!privacyAccepted}
+                disabled={!privacyAccepted || submitting}
                 className="px-7 py-3 rounded-lg bg-primary text-primary-foreground font-body font-bold tracking-wide hover:bg-plum-light transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">
-
-                  Benachrichtige mich
+                  {submitting ? "Wird gesendet..." : "Benachrichtige mich"}
                 </button>
               </div>
               <label className="flex items-start gap-2 cursor-pointer text-left">
