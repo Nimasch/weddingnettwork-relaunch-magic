@@ -31,10 +31,7 @@ const CityLogoMarquee = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.9 }}
     >
-      <div
-        className="overflow-hidden relative group"
-        aria-label="Aktuelle Standorte des Wedding Nettworks"
-      >
+      <div className="overflow-hidden relative group" aria-label="Aktuelle Standorte des Wedding Nettworks">
         {/* Fade edges */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-background to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-background to-transparent" />
@@ -51,7 +48,7 @@ const CityLogoMarquee = () => {
       </div>
 
       <p className="text-center text-xs sm:text-sm italic text-muted-foreground/60 font-body mt-1 sm:mt-2">
-        Und bald auch in Sylt &amp; Mallorca
+        Und bald auch in Sylt &amp; auf Mallorca
       </p>
     </motion.div>
   );
