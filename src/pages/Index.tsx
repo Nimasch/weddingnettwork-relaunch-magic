@@ -111,92 +111,99 @@ const Index = () => {
           Verbunden durch echte Zusammenarbeit. Für unvergessliche Hochzeiten.
         </motion.h1>
 
+        {/* Manifest */}
         <motion.p
-          className="font-body text-lg md:text-xl text-muted-foreground mb-3 max-w-lg"
+          className="font-body text-base md:text-lg text-muted-foreground mb-6 max-w-xl leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}>Dienstleister, die sich kennen.
-Regional verbunden.
-Und gemeinsam Hochzeiten gestalten.
-
+          transition={{ duration: 0.8, delay: 0.6 }}>
+          Das Wedding Nettwork ist kein klassisches Verzeichnis. Hier werden ausschließlich Hochzeitsdienstleister sichtbar, die aktiv Teil unserer regionalen Nettworks sind. Menschen, die sich persönlich kennen, regelmäßig austauschen und gemeinsam Hochzeiten gestalten. Denn die besten Hochzeiten entstehen nicht durch Zufall. Sie entstehen dort, wo Vertrauen bereits vorhanden ist.
         </motion.p>
 
-        <motion.p className="font-display italic text-secondary text-base md:text-lg mb-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.8 }}>
-
-          ​Sei als Erster dabei, wenn wir live gehen!
+        {/* Status-Update */}
+        <motion.p
+          className="font-body text-sm text-muted-foreground/70 italic mb-12 max-w-md"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}>
+          Aktuell entsteht hier die gemeinsame Präsenz aller aktiven Wedding Nettworker. Die ersten Städte werden in Kürze sichtbar.
         </motion.p>
 
-        {/* Email signup */}
+        {/* Signup section */}
         <motion.div
           className="w-full max-w-md"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}>
 
-          {submitted ?
-          <motion.div
-            className="flex flex-col items-center justify-center gap-3 py-6 px-6 rounded-lg bg-card border border-border"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}>
+          <h2 className="font-display text-xl md:text-2xl font-semibold text-foreground mb-4">
+            Werde Teil des Wedding Nettworks
+          </h2>
 
+          {submitted ? (
+            <motion.div
+              className="flex flex-col items-center justify-center gap-3 py-6 px-6 rounded-lg bg-card border border-border"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}>
               <Heart size={24} className="text-gold" fill="currentColor" />
               <span className="font-body text-foreground text-center leading-relaxed">
                 Danke! Wir haben dich auf die Liste gesetzt und melden uns bald bei dir.
               </span>
-            </motion.div> :
-
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               {/* Role pills */}
               <div className="flex gap-3 justify-center">
                 <button
-                type="button"
-                onClick={() => setUserRole("couple")}
-                className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
-                userRole === "couple" ?
-                "bg-primary text-primary-foreground border-primary" :
-                "bg-transparent text-muted-foreground border-border hover:border-primary/40"}`
-                }>
-
+                  type="button"
+                  onClick={() => setUserRole("couple")}
+                  className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
+                    userRole === "couple"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-transparent text-muted-foreground border-border hover:border-primary/40"
+                  }`}>
                   Ich bin ein Paar
                 </button>
                 <button
-                type="button"
-                onClick={() => setUserRole("vendor")}
-                className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
-                userRole === "vendor" ?
-                "bg-primary text-primary-foreground border-primary" :
-                "bg-transparent text-muted-foreground border-border hover:border-primary/40"}`
-                }>
-
+                  type="button"
+                  onClick={() => setUserRole("vendor")}
+                  className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
+                    userRole === "vendor"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-transparent text-muted-foreground border-border hover:border-primary/40"
+                  }`}>
                   Ich bin ein Dienstleister
                 </button>
               </div>
 
+              {/* Dynamic role description */}
+              <p className="font-body text-sm text-muted-foreground text-center leading-relaxed">
+                {userRole === "couple"
+                  ? "Du möchtest Dienstleister aus deiner Region finden, die bereits vertrauensvoll zusammenarbeiten? Erhalte als Erste:r Zugang zu den regionalen Nettworks."
+                  : "Werde Teil des regionalen Netzwerks und erfahre als Erste:r, wann dein Standort sichtbar wird und du als aktiver Nettworker vertreten bist."}
+              </p>
+
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
-                type="email"
-                placeholder="Deine E-Mail-Adresse"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1 px-5 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all" />
-
+                  type="email"
+                  placeholder="Deine E-Mail-Adresse"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="flex-1 px-5 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all" />
                 <button
-                type="submit"
-                disabled={!privacyAccepted || submitting}
-                className="px-7 py-3 rounded-lg bg-primary text-primary-foreground font-body font-bold tracking-wide hover:bg-plum-light transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">
+                  type="submit"
+                  disabled={!privacyAccepted || submitting}
+                  className="px-7 py-3 rounded-lg bg-primary text-primary-foreground font-body font-bold tracking-wide hover:bg-plum-light transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed">
                   {submitting ? "Wird gesendet..." : "Benachrichtige mich"}
                 </button>
               </div>
+
               <label className="flex items-start gap-2 cursor-pointer text-left">
                 <Checkbox
-                checked={privacyAccepted}
-                onCheckedChange={(checked) => setPrivacyAccepted(checked === true)}
-                className="mt-0.5" />
-
+                  checked={privacyAccepted}
+                  onCheckedChange={(checked) => setPrivacyAccepted(checked === true)}
+                  className="mt-0.5" />
                 <span className="text-sm text-muted-foreground font-body">
                   Ich stimme der{" "}
                   <Link to="/datenschutz" className="text-gold underline hover:text-gold-light transition-colors">
@@ -206,7 +213,7 @@ Und gemeinsam Hochzeiten gestalten.
                 </span>
               </label>
             </form>
-          }
+          )}
         </motion.div>
 
         {/* Footer note */}
