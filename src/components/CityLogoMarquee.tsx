@@ -48,7 +48,7 @@ const CityLogoMarquee = () => {
       </div>
 
       <p className="text-center text-xs sm:text-sm italic text-muted-foreground/60 font-body mt-1 sm:mt-2">
-        Und bald auch in Sylt &amp; auf Mallorca
+        Und bald auch auf Sylt &amp; Mallorca
       </p>
     </motion.div>
   );
