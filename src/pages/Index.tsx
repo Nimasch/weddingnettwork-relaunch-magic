@@ -23,17 +23,17 @@ const Index = () => {
     if (!email) return;
 
     setSubmitting(true);
-    const { error } = await supabase
-      .from("waitlist")
-      .insert({ email, role: userRole });
+    const { error } = await supabase.
+    from("waitlist").
+    insert({ email, role: userRole });
 
     if (error) {
       toast({
         title: "Fehler",
-        description: error.code === "23505"
-          ? "Diese E-Mail ist bereits registriert."
-          : "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-        variant: "destructive",
+        description: error.code === "23505" ?
+        "Diese E-Mail ist bereits registriert." :
+        "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+        variant: "destructive"
       });
       setSubmitting(false);
       return;
@@ -108,23 +108,23 @@ const Index = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}>
 
-          Hochzeitsplanung. Neu gedacht.
+          Verbunden durch echte Zusammenarbeit. Für unvergessliche Hochzeiten.
         </motion.h1>
 
         <motion.p
           className="font-body text-lg md:text-xl text-muted-foreground mb-3 max-w-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}>
+          transition={{ duration: 0.8, delay: 0.6 }}>Dienstleister, die sich kennen.
+Regional verbunden.
+Und gemeinsam Hochzeiten gestalten.
 
-          Wir beenden die komplizierte Suche. WeddingNettwork vernetzt die besten Köpfe der Branche direkt mit den glücklichsten Paaren – einfacher, schneller und inspirierender als je zuvor.
         </motion.p>
 
-        <motion.p
-          className="font-display italic text-secondary text-base md:text-lg mb-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}>
+        <motion.p className="font-display italic text-secondary text-base md:text-lg mb-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}>
 
           ​Sei als Erster dabei, wenn wir live gehen!
         </motion.p>
@@ -152,25 +152,25 @@ const Index = () => {
               {/* Role pills */}
               <div className="flex gap-3 justify-center">
                 <button
-                  type="button"
-                  onClick={() => setUserRole("couple")}
-                  className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
-                    userRole === "couple"
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-transparent text-muted-foreground border-border hover:border-primary/40"
-                  }`}
-                >
+                type="button"
+                onClick={() => setUserRole("couple")}
+                className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
+                userRole === "couple" ?
+                "bg-primary text-primary-foreground border-primary" :
+                "bg-transparent text-muted-foreground border-border hover:border-primary/40"}`
+                }>
+
                   Ich bin ein Paar
                 </button>
                 <button
-                  type="button"
-                  onClick={() => setUserRole("vendor")}
-                  className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
-                    userRole === "vendor"
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-transparent text-muted-foreground border-border hover:border-primary/40"
-                  }`}
-                >
+                type="button"
+                onClick={() => setUserRole("vendor")}
+                className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
+                userRole === "vendor" ?
+                "bg-primary text-primary-foreground border-primary" :
+                "bg-transparent text-muted-foreground border-border hover:border-primary/40"}`
+                }>
+
                   Ich bin ein Dienstleister
                 </button>
               </div>
