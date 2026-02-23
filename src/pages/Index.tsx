@@ -139,7 +139,7 @@ const Index = () => {
                   Benachrichtige mich
                 </button>
               </div>
-              <label className="flex items-start gap-2 cursor-pointer text-center">
+              <label className="flex items-start gap-2 cursor-pointer text-left">
                 <Checkbox
                 checked={privacyAccepted}
                 onCheckedChange={(checked) => setPrivacyAccepted(checked === true)}
