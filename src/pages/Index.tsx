@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import logo from "@/assets/wedding-nettwork-logo.jpeg";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Index = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
       setSubmitted(true);
       setEmail("");
+      setPrivacyAccepted(false);
     }
   };
 
@@ -118,21 +121,38 @@ const Index = () => {
               </span>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Deine E-Mail-Adresse"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1 px-5 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-              />
-              <button
-                type="submit"
-                className="px-7 py-3 rounded-lg bg-primary text-primary-foreground font-body font-bold tracking-wide hover:bg-plum-light transition-colors duration-300 whitespace-nowrap"
-              >
-                Benachrichtige mich
-              </button>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder="Deine E-Mail-Adresse"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="flex-1 px-5 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
+                />
+                <button
+                  type="submit"
+                  disabled={!privacyAccepted}
+                  className="px-7 py-3 rounded-lg bg-primary text-primary-foreground font-body font-bold tracking-wide hover:bg-plum-light transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Benachrichtige mich
+                </button>
+              </div>
+              <label className="flex items-start gap-2 cursor-pointer">
+                <Checkbox
+                  checked={privacyAccepted}
+                  onCheckedChange={(checked) => setPrivacyAccepted(checked === true)}
+                  className="mt-0.5"
+                />
+                <span className="text-sm text-muted-foreground font-body">
+                  Ich stimme der{" "}
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-gold underline hover:text-gold-light transition-colors">
+                    Datenschutzerklärung
+                  </a>{" "}
+                  zu.
+                </span>
+              </label>
             </form>
           )}
         </motion.div>
