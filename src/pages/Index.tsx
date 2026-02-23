@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Checkbox } from "@/components/ui/checkbox";
 import logo from "@/assets/wedding-nettwork-logo.jpeg";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -147,9 +148,9 @@ const Index = () => {
 
                 <span className="text-sm text-muted-foreground font-body">
                   Ich stimme der{" "}
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-gold underline hover:text-gold-light transition-colors">
+                  <Link to="/datenschutz" className="text-gold underline hover:text-gold-light transition-colors">
                     Datenschutzerklärung
-                  </a>{" "}
+                  </Link>{" "}
                   zu.
                 </span>
               </label>
