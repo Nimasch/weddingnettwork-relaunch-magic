@@ -77,7 +77,7 @@ const Index = () => {
 
         {/* Heading */}
         <motion.h1
-          className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight"
+          className="font-display text-3xl font-semibold text-foreground mb-4 leading-tight md:text-4xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}>
