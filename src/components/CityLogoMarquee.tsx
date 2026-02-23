@@ -15,7 +15,7 @@ const cities = [
 const CityLogo = ({ name, file }: { name: string; file: string }) => (
   <div className="flex items-center justify-center shrink-0 px-6 md:px-10">
     <img
-      src={`/logos/city-${file}.jpeg`}
+      src={`/logos/city-${file}.jpg`}
       alt={`Wedding Nettwork ${name} – Logo`}
       className="h-16 md:h-20 w-auto object-contain"
       loading="lazy"
