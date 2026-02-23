@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/wedding-nettwork-logo.jpeg";
 import heroBg from "@/assets/hero-bg.jpg";
+import CityLogoMarquee from "@/components/CityLogoMarquee";
 
 type UserRole = "couple" | "vendor";
 
@@ -128,6 +129,12 @@ const Index = () => {
           transition={{ duration: 0.8, delay: 0.8 }}>
           Aktuell entsteht hier die gemeinsame Präsenz aller aktiven Wedding Nettworker. Die ersten Städte werden in Kürze sichtbar.
         </motion.p>
+
+        {/* City Logo Marquee */}
+        <CityLogoMarquee />
+
+        {/* Divider before signup */}
+        <div className="w-16 h-px bg-border my-10" />
 
         {/* Signup section */}
         <motion.div
