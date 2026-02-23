@@ -59,36 +59,33 @@ const Index = () => {
         <div className="absolute inset-0 bg-background/85 backdrop-blur-sm" />
       </div>
 
-      {/* Decorative elements */}
+      {/* Decorative elements – hidden on small screens */}
       <motion.div
-        className="absolute top-20 left-10 text-gold-light opacity-20"
+        className="absolute top-20 left-10 text-gold-light opacity-20 hidden md:block"
         animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}>
-
         <Heart size={40} fill="currentColor" />
       </motion.div>
       <motion.div
-        className="absolute bottom-32 right-16 text-gold-light opacity-15"
+        className="absolute bottom-32 right-16 text-gold-light opacity-15 hidden md:block"
         animate={{ y: [0, -10, 0], rotate: [0, -8, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}>
-
         <Heart size={28} fill="currentColor" />
       </motion.div>
       <motion.div
-        className="absolute top-1/3 right-10 text-gold opacity-10"
+        className="absolute top-1/3 right-10 text-gold opacity-10 hidden md:block"
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}>
-
         <Heart size={20} fill="currentColor" />
       </motion.div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center max-w-2xl mx-auto text-center px-[20px]">
+      <div className="relative z-10 flex flex-col items-center max-w-2xl mx-auto text-center px-4 sm:px-6 py-8 md:py-0">
         {/* Logo */}
         <motion.img
           src={logo}
           alt="WeddingNettwork Logo"
-          className="w-56 md:w-72 mb-8 drop-shadow-lg"
+          className="w-40 sm:w-56 md:w-72 mb-6 md:mb-8 drop-shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }} />
@@ -104,7 +101,7 @@ const Index = () => {
 
         {/* Heading */}
         <motion.h1
-          className="font-display text-3xl font-semibold text-foreground mb-4 leading-tight md:text-4xl"
+          className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground mb-3 md:mb-4 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}>
@@ -114,7 +111,7 @@ const Index = () => {
 
         {/* Manifest */}
         <motion.p
-          className="font-body text-base md:text-lg text-muted-foreground mb-6 max-w-xl leading-relaxed"
+          className="font-body text-sm sm:text-base md:text-lg text-muted-foreground mb-4 md:mb-6 max-w-xl leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}>
@@ -123,7 +120,7 @@ const Index = () => {
 
         {/* Status-Update */}
         <motion.p
-          className="font-body text-sm text-muted-foreground/70 italic mb-12 max-w-md"
+          className="font-body text-xs sm:text-sm text-muted-foreground/70 italic mb-8 md:mb-12 max-w-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}>
@@ -134,7 +131,7 @@ const Index = () => {
         <CityLogoMarquee />
 
         {/* Divider before signup */}
-        <div className="w-16 h-px bg-border my-10" />
+        <div className="w-16 h-px bg-border my-6 md:my-10" />
 
         {/* Signup section */}
         <motion.div
@@ -225,7 +222,7 @@ const Index = () => {
 
         {/* Footer note */}
         <motion.p
-          className="mt-16 text-xs text-muted-foreground font-body"
+          className="mt-10 md:mt-16 pb-4 text-xs text-muted-foreground font-body"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.3 }}>

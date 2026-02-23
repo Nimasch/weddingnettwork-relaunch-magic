@@ -13,11 +13,11 @@ const cities = [
 ];
 
 const CityLogo = ({ name, file }: { name: string; file: string }) => (
-  <div className="flex items-center justify-center shrink-0 px-6 md:px-10">
+  <div className="flex items-center justify-center shrink-0 px-4 sm:px-6 md:px-10">
     <img
       src={`/logos/city-${file}.jpg`}
       alt={`Wedding Nettwork ${name} – Logo`}
-      className="h-16 md:h-20 w-auto object-contain"
+      className="h-12 sm:h-16 md:h-20 w-auto object-contain"
       loading="lazy"
     />
   </div>
@@ -36,11 +36,11 @@ const CityLogoMarquee = () => {
         aria-label="Aktuelle Standorte des Wedding Nettworks"
       >
         {/* Fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 z-10 bg-gradient-to-r from-background to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 z-10 bg-gradient-to-l from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 z-10 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 z-10 bg-gradient-to-l from-background to-transparent" />
 
         {/* Two identical tracks side by side for seamless loop */}
-        <div className="flex w-max animate-marquee group-hover:[animation-duration:60s] py-6">
+        <div className="flex w-max animate-marquee group-hover:[animation-duration:60s] py-3 sm:py-6">
           {cities.map((city) => (
             <CityLogo key={`a-${city.file}`} name={city.name} file={city.file} />
           ))}
@@ -50,7 +50,7 @@ const CityLogoMarquee = () => {
         </div>
       </div>
 
-      <p className="text-center text-sm italic text-muted-foreground/60 font-body mt-2">
+      <p className="text-center text-xs sm:text-sm italic text-muted-foreground/60 font-body mt-1 sm:mt-2">
         Und bald auch in Sylt &amp; Mallorca
       </p>
     </motion.div>
