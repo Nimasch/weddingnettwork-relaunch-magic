@@ -90,7 +90,7 @@ const Index = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Wir arbeiten an etwas Einzigartigem für Dienstleister der Hochzeitsbranche und Brautpaare.
+          Wir beenden die komplizierte Suche. WeddingNettwork vernetzt die besten Köpfe der Branche direkt mit den glücklichsten Paaren – einfacher, schneller und inspirierender als je zuvor.
         </motion.p>
 
         <motion.p
