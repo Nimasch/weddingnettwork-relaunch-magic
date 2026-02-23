@@ -48,7 +48,7 @@ const Index = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen flex flex-col items-center justify-start md:justify-center overflow-x-hidden overflow-y-auto">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -80,7 +80,7 @@ const Index = () => {
       </motion.div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center max-w-2xl mx-auto text-center px-4 sm:px-6 py-8 md:py-0">
+      <div className="relative z-10 flex flex-col items-center w-full max-w-2xl mx-auto text-center px-5 sm:px-6 py-10 md:py-16">
         {/* Logo */}
         <motion.img
           src={logo}
@@ -157,11 +157,11 @@ const Index = () => {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               {/* Role pills */}
-              <div className="flex gap-3 justify-center">
+              <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
                 <button
                 type="button"
                 onClick={() => setUserRole("couple")}
-                className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
+                className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-body font-bold transition-all duration-300 border ${
                 userRole === "couple" ?
                 "bg-primary text-primary-foreground border-primary" :
                 "bg-transparent text-muted-foreground border-border hover:border-primary/40"}`
@@ -171,17 +171,17 @@ const Index = () => {
                 <button
                 type="button"
                 onClick={() => setUserRole("vendor")}
-                className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
+                className={`px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-body font-bold transition-all duration-300 border ${
                 userRole === "vendor" ?
                 "bg-primary text-primary-foreground border-primary" :
                 "bg-transparent text-muted-foreground border-border hover:border-primary/40"}`
                 }>
-                  Ich bin ein Dienstleister
+                  Ich bin Dienstleister
                 </button>
               </div>
 
               {/* Dynamic role description */}
-              <p className="font-body text-sm text-muted-foreground text-center leading-relaxed">
+              <p className="font-body text-xs sm:text-sm text-muted-foreground text-center leading-relaxed">
                 {userRole === "couple" ?
               "Du möchtest Dienstleister aus deiner Region finden, die bereits vertrauensvoll zusammenarbeiten? Erhalte als Erste:r Zugang zu den regionalen Nettworks." :
               "Werde Teil des regionalen Netzwerks und erfahre als Erste:r, wann dein Standort sichtbar wird und du als aktiver Nettworker vertreten bist."}
