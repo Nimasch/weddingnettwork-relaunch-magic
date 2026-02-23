@@ -138,37 +138,37 @@ const Index = () => {
 
           {submitted ?
           <motion.div
-            className="flex items-center justify-center gap-2 py-4 px-6 rounded-lg bg-card border border-border"
+            className="flex flex-col items-center justify-center gap-3 py-6 px-6 rounded-lg bg-card border border-border"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}>
 
-              <Heart size={18} className="text-gold" fill="currentColor" />
-              <span className="font-body text-foreground">
-                Vielen Dank! Wir melden uns bei dir.
+              <Heart size={24} className="text-gold" fill="currentColor" />
+              <span className="font-body text-foreground text-center leading-relaxed">
+                Danke! Wir haben dich auf die Liste gesetzt und melden uns bald bei dir.
               </span>
             </motion.div> :
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              {/* Role tabs */}
-              <div className="flex rounded-lg overflow-hidden border border-border">
+              {/* Role pills */}
+              <div className="flex gap-3 justify-center">
                 <button
                   type="button"
                   onClick={() => setUserRole("couple")}
-                  className={`flex-1 px-4 py-2.5 text-sm font-body font-bold transition-all duration-300 ${
+                  className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
                     userRole === "couple"
-                      ? "bg-gold text-primary-foreground"
-                      : "bg-card text-muted-foreground hover:bg-muted"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-transparent text-muted-foreground border-border hover:border-primary/40"
                   }`}
                 >
-                  Ich bin ein Brautpaar
+                  Ich bin ein Paar
                 </button>
                 <button
                   type="button"
                   onClick={() => setUserRole("vendor")}
-                  className={`flex-1 px-4 py-2.5 text-sm font-body font-bold transition-all duration-300 ${
+                  className={`px-6 py-2 rounded-full text-sm font-body font-bold transition-all duration-300 border ${
                     userRole === "vendor"
-                      ? "bg-gold text-primary-foreground"
-                      : "bg-card text-muted-foreground hover:bg-muted"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-transparent text-muted-foreground border-border hover:border-primary/40"
                   }`}
                 >
                   Ich bin ein Dienstleister
@@ -202,7 +202,7 @@ const Index = () => {
                   <Link to="/datenschutz" className="text-gold underline hover:text-gold-light transition-colors">
                     Datenschutzerklärung
                   </Link>{" "}
-                  zu.
+                  zu und möchte über den Launch informiert werden.
                 </span>
               </label>
             </form>
